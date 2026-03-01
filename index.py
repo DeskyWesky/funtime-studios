@@ -35,6 +35,21 @@ def send_webhook(title, description, success=True):
     except:
         pass
 
+@app.route("/", methods=["POST", "GET"])
+def main():
+    return """
+        <html>
+            <head>
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+            </head>
+            <body style="font-family: 'Inter', sans-serif;">
+                <h1 style="color: red; font-size: 30px;">
+                    i love playtime panic
+                </h1>
+            </body>
+        </html>
+    """
+
 @app.route("/api/OculusLogin", methods=["POST"])
 def oculus_login():
     data = request.json
