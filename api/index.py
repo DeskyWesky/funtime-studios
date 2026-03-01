@@ -35,7 +35,7 @@ def send_webhook(title, description, success=True):
     except:
         pass
 
-@app.route("/api/OculusLogin", methods=["POST"])
+@app.route("/OculusLogin", methods=["POST"])
 def oculus_login():
     data = request.json
     oculus_id = data.get("OculusId")
@@ -61,7 +61,7 @@ def oculus_login():
     send_webhook("Oculus Login Success", f"User: {oculus_id}", True)
     return jsonify({"message": "Oculus authenticated"}), 200
 
-@app.route("/api/PlayFabLogin", methods=["POST"])
+@app.route("/PlayFabLogin"), methods=["POST"])
 def playfab_login():
     data = request.json
     custom_id = data.get("CustomId")
@@ -98,7 +98,7 @@ def playfab_login():
 
 fake_stats = {}
 
-@app.route("/api/AddWin", methods=["POST"])
+@app.route("/AddWin")", methods=["POST"])
 def add_win():
     data = request.json
     user = data.get("User")
@@ -113,12 +113,12 @@ def add_win():
     return jsonify({"wins": fake_stats[user]})
 
 
-@app.route("/api/Leaderboard", methods=["GET"])
+@app.route("/Leaderboard", methods=["GET"])
 def leaderboard():
     sorted_lb = sorted(fake_stats.items(), key=lambda x: x[1], reverse=True)
     return jsonify(sorted_lb)
 
-@app.route("/api/PhotonAuth", methods=["POST"])
+@app.route("/PhotonAuth", methods=["POST"])
 def photon_auth():
     data = request.json
     session_ticket = data.get("SessionTicket")
